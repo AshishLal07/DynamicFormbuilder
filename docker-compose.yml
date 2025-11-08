@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: form-builder-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: form-builder-backend
+    environment:
+      MONGODB_URI: mongodb://admin:password@mongo:27017/form-builder?authSource=admin
+      JWT_SECRET: your-secret-key
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend/src:/app/src
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: form-builder-client
+    ports:
+      - "4173:4173"
+    command: npm run preview -- --host 0.0.0.0 --port 4173   
+    depends_on:
+      - backend
+    environment:
+      VITE_SERVER_URL: http://localhost:5000
+    # volumes:
+    #   #  - ./client/src:/app/src
+    #    - ./client/dist:/app/dist  
+volumes:
+  mongo_data:
