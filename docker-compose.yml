@@ -33,14 +33,16 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+      args:
+        VITE_SERVER_URL: http://localhost:5000
     container_name: form-builder-client
     ports:
       - "4173:4173"
     command: npm run preview -- --host 0.0.0.0 --port 4173   
     depends_on:
       - backend
-    environment:
-      VITE_SERVER_URL: http://localhost:5000
+    # environment:
+    #   VITE_SERVER_URL: http://localhost:5000
     # volumes:
     #   #  - ./client/src:/app/src
     #    - ./client/dist:/app/dist  

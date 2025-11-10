@@ -11,6 +11,10 @@ RUN npm install
 # Copy source code
 COPY . .
 
+ARG VITE_SERVER_URL
+ENV VITE_SERVER_URL=$VITE_SERVER_URL
+
+
 # Build the app - THIS IS CRITICAL
 RUN npm run build
 

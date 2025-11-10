@@ -8,6 +8,7 @@ const formAPi = axios.create({
  // Other configurations
 });
 
+console.log(import.meta.env.VITE_SERVER_URL);
 
 
 // Add a request interceptor
