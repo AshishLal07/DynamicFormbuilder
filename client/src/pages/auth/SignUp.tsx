@@ -38,14 +38,14 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+    <div className="min-h-screen from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-600 rounded-full mb-4">
             <ScrollText className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">SlotSwapper</h1>
-          <p className="text-gray-600">Peer-to-peer time-slot scheduling</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Admin Form Builder</h1>
+          <p className="text-gray-600">Dynamic form creation</p>
         </div>
 
         <div className="space-y-4">
