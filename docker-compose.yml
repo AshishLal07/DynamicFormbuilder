@@ -25,8 +25,9 @@ services:
       - "5000:5000"
     depends_on:
       - mongo
-    volumes:
-      - ./backend/src:/app/src
+    # volumes:
+    #   - ./backend/src:/app/src
+    #   - ./backend/dist:/app/dist  # Add this to persist build
 
   client:
     build:
